@@ -19,6 +19,6 @@ class DinosaurTest extends TestCase {
     $dinosaur = new Dinosaur();
     $dinosaur->setLength(15);
     
-    $this->assertGreaterThan(12, $dinosaur->getLength(), 'Did you put it in the washing machine?');
+    $this->assertGreaterThan(16, $dinosaur->getLength(), 'Did you put it in the washing machine?');
   }
 }
