@@ -56,7 +56,7 @@ class DinosaurFactoryTest extends TestCase{
     return [
       // specification, is large, is carnivorous
       ['large carnivorous dinosaur', true, true ],
-      ['give me all the cookies', false, false ],
+      'default response' => ['give me all the cookies', false, false ],
       ['large herbivore', true, false ]
     ];
   }
