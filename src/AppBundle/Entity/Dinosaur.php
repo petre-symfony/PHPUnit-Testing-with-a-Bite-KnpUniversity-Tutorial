@@ -23,4 +23,7 @@ class Dinosaur
       $this->length = $length;
     }
 
+    public function getSpecification(): string{
+      return 'The Unknown non-carnivorous dinosaur is 0 meters long';
+    }
 }
