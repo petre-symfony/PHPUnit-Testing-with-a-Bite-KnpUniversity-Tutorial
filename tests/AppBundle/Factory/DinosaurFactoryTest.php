@@ -3,6 +3,7 @@ namespace tests\AppBundle\Factory;
 
 use PHPUnit\Framework\TestCase;
 use AppBundle\Entity\Dinosaur;
+use AppBundle\Factory\DinosaurFactory;
 
 class DinosaurFactoryTest extends TestCase{
   public function testItGrowsAVelociraptor(){

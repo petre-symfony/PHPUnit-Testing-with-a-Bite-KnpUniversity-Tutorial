@@ -35,6 +35,10 @@ class Dinosaur
     public function setLength(int $length){
       $this->length = $length;
     }
+    
+    public function getGenus(): string{
+      return $this->genus;
+    }
 
     public function getSpecification(): string{
       return sprintf(
@@ -44,4 +48,5 @@ class Dinosaur
         $this->length
       );
     }
+    
 }
