@@ -37,6 +37,9 @@ class DinosaurFactoryTest extends TestCase{
     $this->assertSame(1, $dinosaur->getLength());
   }
   
+  /**
+    * @dataProvider getSpecificationTests
+  */
   public function testItGrowsADinosaurFromSpecification(string $spec, bool $expectedIslarge, bool $expectedIsCarnivorous){
     $dinosaur = $this->factory->growFromSpecification($spec);
     
