@@ -12,5 +12,7 @@ class DinosaurFactory {
     $dinosaur = new Dinosaur($genus, $isCarnivorous);
     
     $dinosaur->setLength($length);
+    
+    return $dinosaur;
   }
 }
