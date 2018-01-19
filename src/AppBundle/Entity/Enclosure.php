@@ -13,4 +13,8 @@ class Enclosure {
   public function __construct() {
     $this->dinosaurs = new ArrayCollection();
   }
+  
+  public function getDinosaurs(): Collection{
+    return $this->dinosaurs;
+  }
 }
