@@ -14,8 +14,20 @@ class DinosaurFactory {
     $length = random_int(1, Dinosaur::LARGE - 1);
     $isCarnivorous = FALSE;
     
+    if (stripos($specification, 'huge') !== false) {
+      $length = random_int(Dinosaur::HUGE, 100);
+    }
+    
+    if (stripos($specification, 'OMG') !== false) {
+      $length = random_int(Dinosaur::HUGE, 100);
+    }
+    
+    if (stripos($specification, '😱') !== false) {
+      $length = random_int(Dinosaur::HUGE, 100);
+    }
+    
     if (stripos($specification, 'large') !== false) {
-      $length = random_int(Dinosaur::LARGE, 100);
+      $length = random_int(Dinosaur::LARGE, Dinosaur::HUGE - 1);
     }
     
     if (stripos($specification, 'carnivorous') !== false) {
