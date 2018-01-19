@@ -3,6 +3,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use AppBundle\Entity\Dinosaur;
 
 /**
  * @ORM\Entity
@@ -21,5 +22,9 @@ class Enclosure {
   
   public function getDinosaurs(): Collection{
     return $this->dinosaurs;
+  }
+  
+  public function addDinosaur(Dinosaur $dinosaur){
+    $this->dinosaurs[] = $dinosaur;
   }
 }
