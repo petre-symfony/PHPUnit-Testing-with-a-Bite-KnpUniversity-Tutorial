@@ -4,6 +4,7 @@ namespace tests\AppBundle\Factory;
 use PHPUnit\Framework\TestCase;
 use AppBundle\Entity\Dinosaur;
 use AppBundle\Factory\DinosaurFactory;
+use AppBundle\Service\DinosaurLengthDeterminator;
 
 class DinosaurFactoryTest extends TestCase{
   /**
@@ -12,7 +13,8 @@ class DinosaurFactoryTest extends TestCase{
   private $factory;
   
   public function setUp(){
-    $this->factory = new DinosaurFactory();
+    $mockLengthDeterminator = $this->createMock(DinosaurLengthDeterminator::class); 
+    $this->factory = new DinosaurFactory($mockLengthDeterminator);
   }
 
   public function testItGrowsAVelociraptor(){
