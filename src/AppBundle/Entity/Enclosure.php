@@ -17,6 +17,9 @@ class Enclosure {
    */
   private $dinosaurs;
   
+  private $securities;
+
+
   public function __construct() {
     $this->dinosaurs = new ArrayCollection();
   }
