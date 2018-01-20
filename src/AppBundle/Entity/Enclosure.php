@@ -21,6 +21,7 @@ class Enclosure {
   
   /**
    * @var Collection|Security[]
+   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Security", mappedBy="enclosure", cascade=["persist"])
    */
   private $securities;
 
