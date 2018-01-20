@@ -19,8 +19,7 @@ class DinosaurFactory {
   public function growFromSpecification(string $specification): Dinosaur{
     //defaults
     $codeName = 'ING-' . random_int(1, 99999);
-    //$length = $this->lengthDeterminator->getLengthFromSpecification($specification);
-    $length = 0;
+    $length = $this->lengthDeterminator->getLengthFromSpecification($specification);
     $isCarnivorous = FALSE;
     
     
