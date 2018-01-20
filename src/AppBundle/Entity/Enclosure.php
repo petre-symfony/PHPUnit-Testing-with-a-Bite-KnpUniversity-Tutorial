@@ -26,9 +26,13 @@ class Enclosure {
   private $securities;
 
 
-  public function __construct() {
+  public function __construct(bool $withBasicSecurity = false) {
     $this->dinosaurs = new ArrayCollection();
     $this->securities = new ArrayCollection();
+    
+    if ($withBasicSecurity){
+      $this->addSecurity(new Security('fence', TRUE, $this));
+    }
   }
   
   public function getDinosaurs(): Collection{
@@ -36,12 +40,14 @@ class Enclosure {
   }
   
   public function addDinosaur(Dinosaur $dinosaur){
-    if (!$this->canAddDinosaur($dinosaur)){
-      throw new NotABuffetException();
-    }
     if (!$this->isSecurityActive()){
       throw new DinosaursAreRunningRampantException('Are you craaazy?!?');
     }
+    
+    if (!$this->canAddDinosaur($dinosaur)){
+      throw new NotABuffetException();
+    }
+    
     
     $this->dinosaurs[] = $dinosaur;
   }
@@ -54,6 +60,10 @@ class Enclosure {
     }
     
     return FALSE;
+  }
+
+  public function addSecurity(Security $security){
+    $this->securities[] = $security;
   }
 
   private function canAddDinosaur(Dinosaur $dinosaur): bool {
