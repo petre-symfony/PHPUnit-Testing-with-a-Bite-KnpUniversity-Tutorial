@@ -3,10 +3,14 @@ namespace tests\AppBundle\Service;
 
 use PHPUnit\Framework\TestCase;
 use AppBundle\Service\EnclosureBuilderService;
+use Doctrine\ORM\EntityManagerInterface;
+use AppBundle\Factory\DinosaurFactory;
 
 class EnclosureBuilderServiceTest extends TestCase{
   public function testItBuildsAndPersistsEnclosure(){
-    $builder = new EnclosureBuilderService();
+    $em = $this->createMock(EntityManagerInterface::class); 
+    $dinoFactory = $this->createMock(DinosaurFactory::class);
+    $builder = new EnclosureBuilderService($em, $dinoFactory);
     $enclosure = $builder->buildEnclosure(1, 2);  
     
     $this->assertCount(1, $enclosure->getSecurities());
