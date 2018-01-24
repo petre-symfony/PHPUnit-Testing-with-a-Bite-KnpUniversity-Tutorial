@@ -16,6 +16,10 @@ class EnclosureBuilderServiceTest extends TestCase{
       ->method('persist')
       ->with($this->isInstanceOf(Enclosure::class));
     
+    $em->expects($this->once())
+      ->method('flush')
+      ->with($this->isInstanceOf(Enclosure::class));
+    
     $dinoFactory = $this->createMock(DinosaurFactory::class);
     
     $dinoFactory->expects($this->exactly(2))
