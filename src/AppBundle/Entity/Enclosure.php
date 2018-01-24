@@ -61,7 +61,12 @@ class Enclosure {
     
     return FALSE;
   }
+  
+  public function getSecurities(): Collection{
+    return $this->securities;    
+  }
 
+  
   public function addSecurity(Security $security){
     $this->securities[] = $security;
   }
