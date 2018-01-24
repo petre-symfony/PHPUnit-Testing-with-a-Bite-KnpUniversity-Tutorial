@@ -5,6 +5,7 @@ use PHPUnit\Framework\TestCase;
 use AppBundle\Service\EnclosureBuilderService;
 use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Factory\DinosaurFactory;
+use AppBundle\Entity\Dinosaur;
 
 class EnclosureBuilderServiceTest extends TestCase{
   public function testItBuildsAndPersistsEnclosure(){
@@ -13,6 +14,7 @@ class EnclosureBuilderServiceTest extends TestCase{
     
     $dinoFactory->expects($this->exactly(2))
       ->method('growFromSpecification')
+      ->willReturn(new Dinosaur)      
       ->with($this->isType('string'));
     
     $builder = new EnclosureBuilderService($em, $dinoFactory);
