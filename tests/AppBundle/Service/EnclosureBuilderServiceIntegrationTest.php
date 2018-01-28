@@ -9,6 +9,6 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase{
     self::bootKernel();
     
     $enclosureBuilderService = self::$kernel->getContainer()
-      ->get(EnclosureBuilderService::class);
+      ->get('test.'.EnclosureBuilderService::class);
   }
 }
