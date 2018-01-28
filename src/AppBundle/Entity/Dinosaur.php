@@ -12,6 +12,12 @@ class Dinosaur
 {
    const LARGE = 10;
    const HUGE = 30;
+   /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
     /**
      * @ORM\Column(type="integer")
      */
@@ -21,7 +27,7 @@ class Dinosaur
      */
     private $genus;
     /**
-     * @ORM\Column(type="bollean")
+     * @ORM\Column(type="boolean")
      */
     private $isCarnivorous;
     

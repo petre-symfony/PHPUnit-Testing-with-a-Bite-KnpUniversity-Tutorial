@@ -7,6 +7,7 @@ use AppBundle\Entity\Dinosaur;
 use AppBundle\Exception\NotABuffetException;
 use AppBundle\Entity\Security;
 use AppBundle\Exception\DinosaursAreRunningRampantException;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
@@ -14,14 +15,20 @@ use AppBundle\Exception\DinosaursAreRunningRampantException;
  */
 class Enclosure {
   /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;  
+  /**
    * @var Collection
-   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dinosaur", mappedBy="enclosure", cascade=["persist"])
+   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dinosaur", mappedBy="enclosure", cascade={"persist"})
    */
   private $dinosaurs;
   
   /**
    * @var Collection|Security[]
-   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Security", mappedBy="enclosure", cascade=["persist"])
+   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Security", mappedBy="enclosure", cascade={"persist"})
    */
   private $securities;
 
