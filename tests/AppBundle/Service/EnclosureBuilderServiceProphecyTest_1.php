@@ -21,7 +21,10 @@ class EnclosureBuilderServiceProphecyTest extends TestCase{
       ->shouldBeCalledTimes(2)
       ->willReturn(new Dinosaur());  
     
-    $builder = new EnclosureBuilderService($em, $dinoFactory);
+    $builder = new EnclosureBuilderService(
+      $em->reveal(), 
+      $dinoFactory->reveal()
+    );
     $enclosure = $builder->buildEnclosure(1, 2);
     
     $this->assertCount(1, $enclosure->getSecurities());
