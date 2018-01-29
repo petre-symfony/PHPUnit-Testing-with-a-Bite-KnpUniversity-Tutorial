@@ -27,7 +27,9 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase{
     $dinoFactory = $this->createMock(DinosaurFactory::class);
     $dinoFactory->expects($this->any())
       ->method('growFromSpecification')
-      ->willReturn(new Dinosaur());
+      ->willReturnCallback(function($spec) {
+        return new Dinosaur();    
+      });
     
     
     $enclosureBuilderService = new EnclosureBuilderService(
