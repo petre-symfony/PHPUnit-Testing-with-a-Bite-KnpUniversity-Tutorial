@@ -18,3 +18,7 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+    
+doctrine:
+    dbal:
+        url: 'sqlite:///%kernel.project_dir%/var/data/test.sqlite'
