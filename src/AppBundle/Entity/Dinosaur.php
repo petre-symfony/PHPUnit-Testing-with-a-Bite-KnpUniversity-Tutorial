@@ -23,7 +23,7 @@ class Dinosaur
      */
     private $length = 0;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $genus;
     /**
