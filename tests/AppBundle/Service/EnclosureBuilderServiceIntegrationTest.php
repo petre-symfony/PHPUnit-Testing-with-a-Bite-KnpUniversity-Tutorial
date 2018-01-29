@@ -7,16 +7,13 @@ use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Security;
 use AppBundle\Entity\Dinosaur;
 use AppBundle\Entity\Enclosure;
+use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 
 class EnclosureBuilderServiceIntegrationTest extends KernelTestCase{
   public function setUp() {
     self::bootKernel();
     
-    $this->truncateEntities([
-      Enclosure::class,
-      Dinosaur::class,
-      Security::class
-    ]);
+    $this->truncateEntities();
   }
 
   public function testItBuildsEnclosureWithDefaultSpecification(){
@@ -45,25 +42,9 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase{
     $this->assertSame(3, $count, 'Amount of dinosaurs is not the same');
   }
   
-  private function truncateEntities(array $entities){
-    $connection = $this->getEntityManager()->getConnection();
-    $databasePlatform = $connection->getDatabasePlatform();
-
-    if ($databasePlatform->supportsForeignKeyConstraints()) {
-        $connection->query('SET FOREIGN_KEY_CHECKS=0');
-    }
-
-    foreach ($entities as $entity) {
-        $query = $databasePlatform->getTruncateTableSQL(
-            $this->getEntityManager()->getClassMetadata($entity)->getTableName()
-        );
-
-        $connection->executeUpdate($query);
-    }
-
-    if ($databasePlatform->supportsForeignKeyConstraints()) {
-        $connection->query('SET FOREIGN_KEY_CHECKS=1');
-    }
+  private function truncateEntities(){
+    $purger = new ORMPurger($this->getEntityManager());
+    $purger->purge();
   }
   
   /** @return EntityManager */
