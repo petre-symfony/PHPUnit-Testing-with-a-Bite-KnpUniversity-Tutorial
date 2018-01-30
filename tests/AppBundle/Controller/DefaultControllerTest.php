@@ -9,5 +9,7 @@ class DefaultControllerTest extends WebTestCase {
     $client = $this->makeClient();
     
     $crawler = $client->request('GET', '/');
+    
+    $this->assertStatusCode(200, $client);
   }
 }
