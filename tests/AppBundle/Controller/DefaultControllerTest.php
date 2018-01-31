@@ -8,8 +8,13 @@ use AppBundle\DataFixtures\ORM\LoadSecurityData;
 
 class DefaultControllerTest extends WebTestCase {
   public function testEnclosuresAreShownOnTheHomepage() {
-    $this->loadFixtures([]);
-      
+    $this->loadFixtures([
+      LoadBasicParkData::class, 
+      LoadSecurityData::class
+    ]);
+     
+    self::$kernel->getContainer()->get('doctrine')->getManager();
+    
     $client = $this->makeClient();
     
     $crawler = $client->request('GET', '/');
