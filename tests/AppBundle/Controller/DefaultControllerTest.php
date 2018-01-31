@@ -8,10 +8,7 @@ use AppBundle\DataFixtures\ORM\LoadSecurityData;
 
 class DefaultControllerTest extends WebTestCase {
   public function testEnclosuresAreShownOnTheHomepage() {
-    $this->loadFixtures([
-      LoadBasicParkData::class, 
-      LoadSecurityData::class
-    ]);
+    $this->loadFixtures([]);
       
     $client = $this->makeClient();
     
