@@ -12,8 +12,6 @@ class DefaultControllerTest extends WebTestCase {
       LoadBasicParkData::class, 
       LoadSecurityData::class
     ]);
-     
-    self::$kernel->getContainer()->get('doctrine')->getManager();
     
     $client = $this->makeClient();
     
