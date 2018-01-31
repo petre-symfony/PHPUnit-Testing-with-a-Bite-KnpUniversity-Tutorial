@@ -3,9 +3,16 @@
 namespace tests\AppBundle\Controller;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase;
+use AppBundle\DataFixtures\ORM\LoadBasicParkData;
+use AppBundle\DataFixtures\ORM\LoadSecurityData;
 
 class DefaultControllerTest extends WebTestCase {
   public function testEnclosuresAreShownOnTheHomepage() {
+    $this->loadFixtures([
+      LoadBasicParkData::class, 
+      LoadSecurityData::class
+    ]);
+      
     $client = $this->makeClient();
     
     $crawler = $client->request('GET', '/');
