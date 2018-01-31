@@ -32,6 +32,7 @@ class DefaultControllerTest extends WebTestCase {
     $client = $this->makeClient();
     
     $crawler = $client->request('GET', '/');    
+    dump($client->getResponse()->getContent());
     
     $enclosure = $fixtures->getReference('carnivorous-enclosure');
     $selector = sprintf('#enclosure-%s .button-alarm', $enclosure->getId());
