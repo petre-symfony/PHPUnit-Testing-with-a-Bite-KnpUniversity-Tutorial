@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Enclosure;
 
 /**
  * @ORM\Entity
@@ -64,5 +65,9 @@ class Dinosaur
     
     public function isCarnivorous() {
       return $this->isCarnivorous;
+    }
+    
+    public function setEnclosure(Enclosure $enclosure){
+        $this->enclosure = $enclosure;
     }
 }
